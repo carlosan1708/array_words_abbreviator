@@ -64,7 +64,7 @@ const separatedItemsByType = (itemsSeparatedBySpace)=>{
    * if it's false, then it will remove common words in at least 2 words, yet it's more expensive to calculate.
    *
    * Important, if there is a case when array could result empty it will return the numeric numbers of that array to prevent errors.
-   * If there are no numerics , then it will simply return the words by using the special chracters.
+   * If there are no numerics , then it will simply return the words by using the special characters.
    * @param special
    * @param items
    * @param allCommon
