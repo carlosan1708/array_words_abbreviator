@@ -15,7 +15,7 @@ then it takes that array and uses 5 types of strategies to create the abbreviati
 Example: 
 
 Check 
-* [index.js](src/index.js)
+* [index.js](index.js)
 
 ``` npm run start ```
 
