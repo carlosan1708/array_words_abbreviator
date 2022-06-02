@@ -12,14 +12,17 @@ then it takes that array and uses 5 types of strategies to create the abbreviati
 5)  More methods to be discovered, so creating numbers as keys for now.
 
 
-Example of the functions: 
+Example: 
 
-```
-let items = ['item 2', '3item2', 'item1']
-const commonSeparationsForWords = ['_', '-', ',']
-const arrayWithNoCommonsWords = generateArrayWithNoCommonsWords(special, items, true)
-const result = generateAbbreviationArray(arrayWithNoCommonsWords, 8)
-```
+Check 
+* [index.js](src/index.js)
+
+``` npm run start ```
+
+Run test:
+
+``` npm run test ```
+
 
 All test are passing, check those for examples.
 

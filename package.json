@@ -1,9 +1,10 @@
 {
-  "name": "cargill_abbreviations",
+  "name": "abbreviations",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "example.js",
   "scripts": {
+    "start": "node index.js",
     "test": "jest"
   },
   "keywords": [],

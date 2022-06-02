@@ -24,7 +24,6 @@ const getAllCommon = (arrayOfItemsIntoWords)=>{
 }
 
 const removeCommonItems = (commonWordsSet, arrayOfItemsIntoWords) => {
-      console.log(commonWordsSet)
       let itemsWithUniqueElements = []
       arrayOfItemsIntoWords.forEach(itemOfWords => {
           //First level Ex: ['item' ,'1']
@@ -65,13 +64,19 @@ const separatedItemsByType = (itemsSeparatedBySpace)=>{
    *
    * Important, if there is a case when array could result empty it will return the numeric numbers of that array to prevent errors.
    * If there are no numerics , then it will simply return the words by using the special characters.
-   * @param special
-   * @param items
+   * @param specialCharacterList
+   * @param itemList
    * @param allCommon
    * @returns {*[]}
    */
- const generateArrayWithNoCommonsWords = (special, items, allCommon = true)=>{
-    const itemsSeparatedBySpace = replaceSpecialWithSpace(special, items)
+ const generateArrayWithNoCommonsWords = (specialCharacterList, itemList, allCommon = true)=>{
+    if(!Array.isArray(specialCharacterList) || specialCharacterList.length < 2 ){
+        console.log("Please send an array, example: ['_', ','] ")
+    }
+    if(!Array.isArray(itemList) || itemList.length < 2){
+        console.log("Please send an array, example: ['item 1', 'item 2'] ")
+    }
+    const itemsSeparatedBySpace = replaceSpecialWithSpace(specialCharacterList, itemList)
     const itemsSeparatedByTypeAndSpace = separatedItemsByType(itemsSeparatedBySpace)
 
      let commonWords
