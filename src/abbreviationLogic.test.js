@@ -51,7 +51,7 @@ describe("Test abbreviationLogic", () => {
     });
 
     test("Should find the beginning which is unique", () => {
-        const itemList = ['A178qwe84-4548748-5457878','B178qwe84-4548748-5457878','C178qwe84-4548748-5457878','D178qwe84-4548748-5457878']
+        const itemList = ['A178qwe84-4548748-5457878', 'B178qwe84-4548748-5457878', 'C178qwe84-4548748-5457878', 'D178qwe84-4548748-5457878']
         const specialCharacterList = ['_', '-', ',']
         const arrayWithNoCommonsWords = generateArrayWithNoCommonsWords(specialCharacterList, itemList, true)
         const result = generateAbbreviationArray(arrayWithNoCommonsWords, 8)
@@ -59,7 +59,7 @@ describe("Test abbreviationLogic", () => {
     });
 
     test("Should find the middle which is unique", () => {
-        const itemList = ['178qwe84-4548G12748-5457878','178qwe84-45487G1348-5457878','178qwe84-4548G14748-5457878','178qwe84-4548G15748-5457878']
+        const itemList = ['178qwe84-4548G12748-5457878', '178qwe84-45487G1348-5457878', '178qwe84-4548G14748-5457878', '178qwe84-4548G15748-5457878']
         const specialCharacterList = ['_', '-', ',']
         const arrayWithNoCommonsWords = generateArrayWithNoCommonsWords(specialCharacterList, itemList, true)
         const result = generateAbbreviationArray(arrayWithNoCommonsWords, 8)
@@ -72,7 +72,7 @@ describe("Test abbreviationLogic", () => {
     });
 
     test("Should produce small array", () => {
-        const itemList = ['1','2']
+        const itemList = ['1', '2']
         const specialCharacterListCharacterList = ['_', '-', ',']
         const arrayWithNoCommonsWords = generateArrayWithNoCommonsWords(specialCharacterListCharacterList, itemList, true)
         const sizeCriteria = 8
@@ -80,6 +80,21 @@ describe("Test abbreviationLogic", () => {
         expect(result).toEqual([
             "1",
             "2",
+        ])
+    });
+
+    test("Should work without removing common words small array", () => {
+        let itemList = ['item_item_2', 'item_item_1', 'item_item_3', 'item_item-5']
+        const sizeCriteria = 8
+        itemList = itemList.map(function (curr) {
+            return [curr]
+        })
+        const result = generateAbbreviationArray(itemList, sizeCriteria)
+        expect(result).toEqual([
+            "item_2",
+            "item_1",
+            "item_3",
+            "item-5"
         ])
     });
 });

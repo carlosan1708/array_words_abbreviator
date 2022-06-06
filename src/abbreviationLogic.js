@@ -9,6 +9,10 @@ const isValidArrayForAbbreviation = (arrayToValidate, sizeCriteria)=>{
 }
 
 const generateAbbreviationArray = (arrayWithNoCommonsWords, sizeCriteria) => {
+    if(arrayWithNoCommonsWords.length < 1 && !Array.isArray(arrayWithNoCommonsWords[0])){
+        console.log("Incorrect format, it needs to be a list of list")
+        return 
+    }
     //Start by joining and determining if joined parts are less than sizeCriteria
     const joinedArrayOfItems = arrayWithNoCommonsWords.map(itemWords => itemWords.join(''))
 
@@ -21,12 +25,14 @@ const generateAbbreviationArray = (arrayWithNoCommonsWords, sizeCriteria) => {
 
     //Second: Check taking pieces (substrings) of the beginning/end of the array.
     //Check if individual pieces are unique. Could be improved but for now taking first and last element.
-    const uniqueElementsBegin = arrayWithNoCommonsWords.map(item => item[0])
+    const uniqueElementsBegin = arrayWithNoCommonsWords.map(item => item[0]);
+    
     if(isValidArrayForAbbreviation(uniqueElementsBegin,sizeCriteria ))
         return uniqueElementsBegin
 
 
-    const uniqueElementsLast = arrayWithNoCommonsWords.map(item => item[item.length-1])
+    const uniqueElementsLast = arrayWithNoCommonsWords.map(item => item[item.length-1]);
+    
     if(isValidArrayForAbbreviation(uniqueElementsLast,sizeCriteria ))
         return uniqueElementsLast
 
@@ -43,7 +49,7 @@ const generateAbbreviationArray = (arrayWithNoCommonsWords, sizeCriteria) => {
     //Forth: Check if start and end substring of the joined words is enough.
     //Take beginning and end of the joinedWord and create unique pieces.
     const specialConstructArrayWords = joinedArrayOfItems.map(item =>{
-        return item.substring(0, 3) + item.substring(item[item.length - 3], item[item.length - 1]);
+        return item.substring(0, 3) + item.substring(item.length - 3, item.length);
     })
 
     if(isValidArrayForAbbreviation(specialConstructArrayWords,sizeCriteria ))
